@@ -1,0 +1,25 @@
+/* Alisa Steensen
+Module 2: CSS Styling */
+
+/* Body Styles */
+body {
+    background-color: #f3c7f3;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #030303;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/* Table Styles */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #030303;
+    padding: 8px;
+}
