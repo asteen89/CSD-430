@@ -1,0 +1,27 @@
+/* Alisa Steensen Module 4 CSS */
+
+body {
+  background-color: #6e6d6d;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  position: left;
+}
+
+table {
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  width: 100%;
+  margin: 20px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-size: 16px;
+  text-align: left;
+  padding: 8px;
+}
+
+tr {
+  background-color: #f0f0f0;
+}
