@@ -14,7 +14,7 @@
 <body>
     <h1>Job Application Information</h1>
 
-    <!--Table Information-->
+    <!--Table Information that pulls from the bean-->
     <table border="1">
         <tr><td><strong>Full Name:</strong></td><td><jsp:getProperty name="applicant" property="fullname" /></td></tr>
         <tr><td><strong>Email:</strong></td><td><jsp:getProperty name="applicant" property="email" /></td></tr>

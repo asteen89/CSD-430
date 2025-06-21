@@ -1,0 +1,40 @@
+/* Alisa Steensen Module 6 */
+
+body {
+    background-color: #f9f9f9;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+a {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    color: #007acc;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+    width: 80%;
+    background-color: #fff;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+thead {
+    background-color: #007acc;
+    color: white;
+}
