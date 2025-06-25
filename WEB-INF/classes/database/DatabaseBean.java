@@ -1,5 +1,12 @@
 package database;
 
+/*********************************
+ * Alisa Steensen 
+ * Module 7
+ * 6/25/25
+ * *******************************
+ */ 
+
 import java.sql.*;
 
 public class DatabaseBean implements java.io.Serializable {
@@ -153,15 +160,79 @@ public class DatabaseBean implements java.io.Serializable {
 
     // ***************************************************************
     // ***************************************************************
+    // ------------------------ Create Record ------------------------
+    // ***************************************************************
+    // ***************************************************************
+    
+    public void createRecord(String state_name, String capital, double population_millions, String state_bird, String state_flower) {
+    	
+    	try {
+    		
+    		Class.forName("com.mysql.cj.jdbc.Driver");
+    		String url = "jdbc:mysql://localhost:3306/CSD430?";
+            connection = DriverManager.getConnection(url + "user=student1&password=pass");
+            statement = connection.createStatement();
+    	}
+    	catch(ClassNotFoundException cnfe) {
+    		
+    		System.out.print("SQL Exception" + cnfe);
+    	}
+    	catch(java.sql.SQLException sqle){
+    		
+    		System.out.print("SQL Exception" + sqle);
+    	}
+    	
+    	try {
+
+    		String sql = "INSERT INTO alisa_states_data(state_name, capital, population_millions, state_bird, state_flower)" + 
+    		   "VALUES('" + state_name + "', '" + capital + "', " + population_millions + ", '" + state_bird + "', '" + state_flower + "');";
+
+    		statement.executeUpdate(sql);    		
+    		
+    	}
+    	catch(java.sql.SQLException sqle) {
+    		
+    	}
+    }
+
+    // ***************************************************************
+    // ***************************************************************
     // ------------------------ FormGetPK ----------------------------
     // ***************************************************************
     // ***************************************************************
-    public String formGetPK(String jspName) {
+    public String formGetPK(String requestURL) {
+        
+        java.sql.ResultSet rs = null;
+
+        try {
+    		
+    		Class.forName("com.mysql.cj.jdbc.Driver");
+    		String url = "jdbc:mysql://localhost:3306/CSD430?";
+    		connection = java.sql.DriverManager.getConnection(url + "user=student5&password=pass");
+    		statement = connection.createStatement();
+    	}
+    	catch(ClassNotFoundException cnfe) {
+    		
+    		System.out.print("SQL Exception" + cnfe);
+    	}
+    	catch(java.sql.SQLException sqle){
+    		
+    		System.out.print("SQL Exception" + sqle);
+    	}
+    	
+    	try{
+    		
+        	rs = statement.executeQuery("SELECT id FROM alisa_states_data");
+        }
+        catch(java.sql.SQLException e){
+        	
+        }
+
+
         StringBuilder sb = new StringBuilder();
         try {
-            ResultSet rs = statement.executeQuery("SELECT id FROM alisa_states_data");
 
-            sb.append("<form action='").append(jspName).append("' method='post'>");
+            sb.append("<form action='").append(requestURL).append("' method='post'>");
             sb.append("<label for='state_id'>Select State ID:</label>");
             sb.append("<select name='state_id'>");
 

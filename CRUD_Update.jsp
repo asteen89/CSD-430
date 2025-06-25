@@ -12,7 +12,7 @@
 
   <h1>CRUD Update</h1>
 
-  <jsp:useBean id="myDB" class="database.DbBean" />
+  <jsp:useBean id="myDB" class="database.DatabaseBean" />
 
   <br /> <a href="index.html">Back to Index</a> <br /><br />
 
