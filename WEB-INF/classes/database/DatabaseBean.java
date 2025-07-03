@@ -160,6 +160,77 @@ public class DatabaseBean implements java.io.Serializable {
 
     // ***************************************************************
     // ***************************************************************
+    // --------------------- Update Record Part 1 --------------------
+    // ***************************************************************
+    // ***************************************************************
+
+    public String idSelection() {
+        StringBuilder sb = new StringBuilder();
+        try {
+            String sql = "SELECT id, state_name FROM alisa_states_data";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("state_name");
+                sb.append("<option value='").append(id).append("'>")
+                  .append(id).append(" - ").append(name)
+                  .append("</option>");
+            }
+            stmt.close();
+        } catch (SQLException e) {
+            sb.append("<option>Error loading</option>");
+        }
+        return sb.toString();
+    }
+    
+
+    // ***************************************************************
+    // ***************************************************************
+    // ------------------------ Update Record ------------------------
+    // ***************************************************************
+    // ***************************************************************
+
+    public String updateRecord_2(String state_name, String capital, double population_millions, int id, 
+        String state_bird, String state_flower) {
+
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        String url = "jdbc:mysql://localhost:3306/CSD430?";
+        connection = java.sql.DriverManager.getConnection(url + "user=student5&password=pass");
+    }
+    catch(ClassNotFoundException cnfe) {
+        System.out.print("Class Not Found Exception: " + cnfe);
+    }
+    catch(java.sql.SQLException sqle) {
+        System.out.print("SQL Exception: " + sqle);
+    }
+
+    String sql = "UPDATE alisa_states_data SET state_name = ?, capital = ?, population_millions = ?, state_bird = ?, state_flower = ? WHERE id = ?";
+
+
+    try {
+        java.sql.PreparedStatement sqlStatement = connection.prepareStatement(sql);
+
+        sqlStatement.setString(1, state_name);
+        sqlStatement.setString(2, capital);
+        sqlStatement.setDouble(3, population_millions);
+        sqlStatement.setString(4, state_bird);
+        sqlStatement.setString(5, state_flower);
+        sqlStatement.setInt(6, id);     //which state to update
+
+        sqlStatement.executeUpdate();
+        sqlStatement.close();
+    }
+    catch(java.sql.SQLException sqle) {
+        System.out.print("SQL Exception: " + sqle);
+    }
+
+    return "Complete";
+    }
+
+    // ***************************************************************
+    // ***************************************************************
     // ------------------------ Create Record ------------------------
     // ***************************************************************
     // ***************************************************************
