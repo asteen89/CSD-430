@@ -2,8 +2,8 @@ package database;
 
 /*********************************
  * Alisa Steensen 
- * Module 7
- * 6/25/25
+ * Module 9
+ * 7/12/25
  * *******************************
  */ 
 
@@ -319,6 +319,42 @@ public class DatabaseBean implements java.io.Serializable {
             sb.append("<p>Error loading state IDs: ").append(e.getMessage()).append("</p>");
         }
         return sb.toString();
+    }
+
+    // ***************************************************************
+    // ***************************************************************
+    // ------------------------ Delete -------------------------------
+    // ***************************************************************
+    // ***************************************************************
+
+    public String delete(int id) {
+    	
+    	StringBuilder dataStringBuilder = new StringBuilder();    	
+    	
+    	try{
+    		
+    		Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/CSD430?";
+            connection = java.sql.DriverManager.getConnection(url + "user=student5&password=pass");
+            statement = connection.createStatement();
+        }
+    	catch(ClassNotFoundException cnfe) {
+    		
+    	}
+    	catch(java.sql.SQLException e){
+        
+    	}
+        try{
+        	
+        	statement.executeUpdate("DELETE FROM alisa_states_data WHERE id = " + id);
+        	
+        	dataStringBuilder.append("The record has been deleted.");
+        }
+        catch(java.sql.SQLException e){
+        	
+        }
+
+    	return dataStringBuilder.toString();
     }
 
     // ***************************************************************
