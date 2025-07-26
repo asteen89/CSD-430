@@ -1,0 +1,15 @@
+<!-- File: dogtag.tld Alisa Steensen Mod 10 Example-->
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        version="2.1">
+
+  <tlib-version>1.0</tlib-version>
+  <short-name>dogtag</short-name>
+  <uri>http://module10example.com/dogtags</uri>
+
+  <tag>
+    <name>doginfo</name>
+    <tag-class>module10example.DogTags</tag-class>
+    <body-content>empty</body-content>
+  </tag>
+</taglib>
